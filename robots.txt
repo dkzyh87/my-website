@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://dkzyh87.github.io/my-website/sitemap.xml
