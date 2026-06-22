@@ -1,0 +1,77 @@
+@import "tailwindcss";
+
+:root {
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  /* 亮色主题：粒子 & 渐变 */
+  --particle-color: rgba(30, 64, 175, 0.6);
+  --particle-line-color: rgba(30, 64, 175, 0.15);
+  --hero-gradient-from: #e8f0fe;
+  --hero-gradient-via: #d4e8ff;
+  --hero-gradient-to: #ffffff;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --particle-color: rgba(148, 163, 255, 0.5);
+    --particle-line-color: rgba(148, 163, 255, 0.12);
+    --hero-gradient-from: #0a0a1a;
+    --hero-gradient-via: #1a0a2e;
+    --hero-gradient-to: #0d0d0d;
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 56px;
+}
+
+@media (min-width: 768px) {
+  html {
+    scroll-padding-top: 64px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  margin: 0;
+}
+
+/* dvh 渐进增强：旧浏览器（Safari < 15.4）降级为 100vh */
+.hero-min-height {
+  min-height: 100vh;
+}
+@supports (min-height: 100dvh) {
+  .hero-min-height {
+    min-height: 100dvh;
+  }
+}
+
+/* 导航栏毛玻璃效果（含旧浏览器降级：不支持 backdrop-filter 时使用不透明背景） */
+.nav-glass {
+  background: rgb(255 255 255);
+}
+@media (prefers-color-scheme: dark) {
+  .nav-glass {
+    background: rgb(17 24 39);
+  }
+}
+@supports (backdrop-filter: blur(12px)) {
+  .nav-glass {
+    background: rgb(255 255 255 / 0.7);
+    backdrop-filter: blur(12px);
+  }
+  @media (prefers-color-scheme: dark) {
+    .nav-glass {
+      background: rgb(17 24 39 / 0.7);
+    }
+  }
+}
